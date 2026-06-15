@@ -118,3 +118,4 @@ def test_create_fit_card_returns_caption(monkeypatch):
     call = fake_client.chat.completions.calls[0]
     assert "Vintage Graphic Tee" in call["messages"][1]["content"]
     assert call["temperature"] > 1.0
+
