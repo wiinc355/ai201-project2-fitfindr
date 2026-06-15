@@ -190,7 +190,15 @@ Writing the planning loop section of planning.md before touching agent.py forced
 One way implementation diverged from the spec and why:
 The original spec assumed the LLM would always be available. In practice, running tests without a configured GROQ_API_KEY caused suggest_outfit and create_fit_card to raise exceptions instead of returning strings. The implementation was updated to catch LLM call failures and return fallback advice strings, keeping the agent functional even without a live API key. This was not in the original spec but was necessary for the agent to be reliably testable and demonstrable.
 
+## Stretch Features
+
+No stretch features were implemented for this submission.
+
 ## Demo Video Checklist (3 to 5 minutes)
+
+## Demo Video Link
+
+https://youtu.be/goJJDRADAwM
 
 Use this structure while recording:
 
