@@ -184,17 +184,11 @@ What I changed before using:
 
 ## Spec Reflection
 
-What matched the spec:
-- All three tools are implemented with the planned parameters and return types.
-- The planning loop follows the designed branches, including early stop on no results.
-- Session state passes data between tools exactly as designed.
+One way the spec helped:
+Writing the planning loop section of planning.md before touching agent.py forced an explicit early-exit decision on empty search results. Without that written constraint, it would have been easy to pass an empty list straight into suggest_outfit and only discover the bug at runtime. The spec made the branch visible before any code existed.
 
-What changed from the original plan:
-- Added graceful non-exception fallbacks when LLM access is unavailable.
-- Added additional query parsing robustness for extracting size and max_price.
-
-Why those changes improved reliability:
-- The agent now remains usable in more environments and still returns informative output when external API dependencies fail.
+One way implementation diverged from the spec and why:
+The original spec assumed the LLM would always be available. In practice, running tests without a configured GROQ_API_KEY caused suggest_outfit and create_fit_card to raise exceptions instead of returning strings. The implementation was updated to catch LLM call failures and return fallback advice strings, keeping the agent functional even without a live API key. This was not in the original spec but was necessary for the agent to be reliably testable and demonstrable.
 
 ## Demo Video Checklist (3 to 5 minutes)
 
